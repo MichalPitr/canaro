@@ -14,8 +14,8 @@ from tensorflow.keras.layers import Dense, Flatten, Conv2D, MaxPooling2D, Dropou
 # from tensorflow.keras.optimizers import SGD
 
 
-# def createSimpsonsModel(IMG_SIZE=(224,224), channels=1, output_dim=1, loss='binary_crossentropy', decay=None, learning_rate=None, momentum=None, nesterov=None):
-def createSimpsonsModel(IMG_SIZE=(224,224), channels=1, output_dim=1):
+def createSimpsonsModel(IMG_SIZE=(224,224), channels=1, output_dim=1, loss='binary_crossentropy', decay=None, learning_rate=None, momentum=None, nesterov=None):
+#def createSimpsonsModel(IMG_SIZE=(224,224), channels=1, output_dim=1):
     w,h = IMG_SIZE[:2]
     input_shape = (w,h,channels)
     input_layer = Input(input_shape)
@@ -42,7 +42,7 @@ def createSimpsonsModel(IMG_SIZE=(224,224), channels=1, output_dim=1):
     # Output Layer
     output = Dense(output_dim, activation='softmax', name='output_node')(model)
     
-    model = Model(inputs=input, outputs=output)
+    model = Model(inputs=input_layer, outputs=output)
 
     # optimizer = SGD(lr=LEARNING_RATE, decay=DECAY, momentum=MOMENTUM, nesterov=nesterov)
     # model.compile(loss=loss, optimizer=optimizer, metrics=['accuracy'])
